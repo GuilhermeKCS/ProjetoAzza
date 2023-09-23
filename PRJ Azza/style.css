@@ -1,0 +1,69 @@
+body {
+    background-color: rgb(223 228 238);
+    font-family: Arial, sans-serif;
+    color: #fff; /* Cor do texto */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: rgb(235, 88, 71);
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 20px;
+}
+.conta {
+    text-decoration: none;
+}
+a{color: #fff;
+}
+
+.container {
+    border-radius: 50px;
+    background: var(--Azul, #183086);
+    align-content: center;
+    justify-content: center;
+    width: 703px;
+    height: 590px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+   
+}
+
+
+/* Estilos para o formulário de login */
+
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 339px;
+    height: 40px;
+    flex-shrink: 0;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    width: 339px;
+    height: 40px;
+    flex-shrink: 0;
+    background-color: rgb(235, 88, 71);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
