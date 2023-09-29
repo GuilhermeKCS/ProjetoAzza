@@ -1,0 +1,34 @@
+body#inicio {
+    background-image: url("img/capa.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+  
+    width: 100%;
+    height: 100vh;
+  }
+  .form-container{
+    max-width: 350px;
+    padding: 1rem;
+  }
+  .container {
+    max-width: 800px;
+    margin-top: 10px; 
+    margin-bottom: auto; 
+    padding: 20px;
+    border-radius: 5px;
+    
+}
+
+  html,body{
+    height: 100%;
+    width: auto;
+  }
+  .imagem-login{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+ 

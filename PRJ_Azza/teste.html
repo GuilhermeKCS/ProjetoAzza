@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!--<form id="login-form" action="processa-login.php" method="POST">
+    -- Seus campos de entrada do formulário aqui --
+    
+    -- Adicione o widget do reCAPTCHA 
+    <div class="g-recaptcha" data-sitekey="SUA_SITE_KEY_AQUI"></div>
+
+    <button type="submit" class="btn btn-primary w-100 py-2 mt-3">Login</button>
+</form>
+-->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" type="image/png" href="static/img/favicon.jpeg" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azza</title>
+</head>
+<body id="inicio" class="d-flex align-items-center py-4 bg-body-tertiary">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form id="login-form" action="processa-login.php" method="POST">
+                    <img src="static/img/AZZA.png" class="img-fluid mx-auto d-block mb-4" alt="Logotipo Azza">
+                    <div id="msgError" class="text-danger"></div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="cpf" placeholder="Digite seu CPF">
+                        <label for="cpf">CPF:</label>
+                    </div>
+                    <button type="button" onclick="validarCPF()" class="btn btn-primary w-100 py-2 mt-3">Acessar CPF</button>
+                    <div class="g-recaptcha" data-sitekey="SUA_SITE_KEY_AQUI"></div>
+
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#cpf').inputmask('999.999.999-99', { clearMaskOnLostFocus: false });
+        });
+        function validarCPF() {
+            const cpf = document.getElementById('cpf').value.replace(/[^\d]+/g, ''); // Remove caracteres não numéricos
+
+            if (cpf.length !== 11 || !validarDigitosVerificadores(cpf)) {
+                document.getElementById('msgError').innerHTML = 'CPF inválido';
+            } else {
+                document.getElementById('msgError').innerHTML = 'CPF válido';
+            }
+        }
+
+        function validarDigitosVerificadores(cpf) {
+            const cpfSemDigitos = cpf.substring(0, 9);
+            const digito1 = calcularDigitoVerificador(cpfSemDigitos);
+            const digito2 = calcularDigitoVerificador(cpfSemDigitos + digito1);
+            return cpf === cpfSemDigitos + digito1 + digito2;
+        }
+
+        function calcularDigitoVerificador(cpfParcial) {
+            let soma = 0;
+            let peso = 10;
+            for (let i = 0; i < cpfParcial.length; i++) {
+                soma += parseInt(cpfParcial[i]) * peso;
+                peso--;
+            }
+            const resto = soma % 11;
+            return resto < 2 ? 0 : 11 - resto;
+        }
+    </script>
+</body>
+</html>
+
+<!--<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" type="image/png" href="static/img/favicon.jpeg" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azza</title>
+</head>
+<body id="inicio" class="d-flex align-items-center py-4 bg-body-tertiary">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form>
+                    <img src="static/img/AZZA.png" class="img-fluid mx-auto d-block mb-4" alt="Logotipo Azza">
+                    <div id="msgError" class="text-danger"></div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="cpf" placeholder="Digite seu CPF">
+                        <label for="cpf">CPF:</label>
+                    </div>
+                    <button type="button" onclick="validarCPF()" class="btn btn-primary w-100 py-2 mt-3">Acessar CPF</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#cpf').inputmask('999.999.999-99', { clearMaskOnLostFocus: false });
+        });
+
+        function validarCPF() {
+            const cpf = document.getElementById('cpf').value.replace(/[^\d]+/g, ''); // Remove caracteres não numéricos
+
+            if (cpf.length !== 11 || !validarDigitosVerificadores(cpf)) {
+                document.getElementById('msgError').innerHTML = 'CPF inválido';
+            } else {
+                document.getElementById('msgError').innerHTML = 'CPF válido';
+            }
+        }
+
+        function validarDigitosVerificadores(cpf) {
+            const cpfSemDigitos = cpf.substring(0, 9);
+            const digito1 = calcularDigitoVerificador(cpfSemDigitos);
+            const digito2 = calcularDigitoVerificador(cpfSemDigitos + digito1);
+            return cpf === cpfSemDigitos + digito1 + digito2;
+        }
+
+        function calcularDigitoVerificador(cpfParcial) {
+            let soma = 0;
+            let peso = 10;
+            for (let i = 0; i < cpfParcial.length; i++) {
+                soma += parseInt(cpfParcial[i]) * peso;
+                peso--;
+            }
+            const resto = soma % 11;
+            return resto < 2 ? 0 : 11 - resto;
+        }
+    </script>
+</body>
+</html>-->
+
