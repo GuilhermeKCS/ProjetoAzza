@@ -16,11 +16,90 @@
 <body id="inicio" class="d-flex alignt-items-center py-4 bg-body-tertiary">
     <main id="main" class="w-100 m-auto form-container">
        <form>
-            <img src="static/img/AZZA.png" class="imagem-login" >
-            <div id="msgError"></div>
+            <img src="static/img/logo-azza-institucional.jpeg" class="imagem-login" >
+            <!-- On rows -->
+    
+
+    <title>Tabela de Boletos Atrasados</title>
+    <!-- Inclua os links para os arquivos CSS do Bootstrap -->
+    <link rel="stylesheet" href="caminho_para_bootstrap.css">
+</head>
+<body>
+    <div class="row justify-content-center">
+        
+        <table class="table table-striped">
+            <thead class="table-warning">
+                <tr>
+                    <th> CPF </th>
+                    <th>Cliente</th>
+                    <th>Boleto</th>
+                    <th>Vencimento</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-boletos">
+                <!-- Os dados da API serão preenchidos aqui -->
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        // Simulando a recuperação dos dados da API 
+        const dadosAPI = [
+            { cpf: 1, nomeCliente: "Cliente A", numeroBoleto: "B0001", dataVencimento: "04-08-2023", valor: 100.00 },
+            
+        ];
+
+        // Preenchendo a tabela com os dados da API
+        const tabelaBoletos = document.getElementById("tabela-boletos");
+        dadosAPI.forEach(boleto => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${boleto.cpf}</td>
+                <td>${boleto.nomeCliente}</td>
+                <td>${boleto.numeroBoleto}</td>
+                <td>${boleto.dataVencimento}</td>
+                <td>${boleto.valor}</td>
+            `;
+            tabelaBoletos.appendChild(row);
+        });
+    </script>
+</body>
+</html>
+
+    <!--<tr class="table-active"><textarea name=" teste" id="table-active" cols="50" rows="1"></textarea></tr>
+</div>
+
+<tr class="table-primary"><picture>
+    <source media="(min-width:30px )" srcset="">
+    <img src="" alt="">
+</picture></tr>
+<tr class="table-secondary">...</tr>
+<tr class="table-success">...</tr>
+<tr class="table-danger">...</tr>
+<tr class="table-warning">...</tr>
+<tr class="table-info">...</tr>
+<tr class="table-light">...</tr>
+<tr class="table-dark">...</tr>
+
+ On cells (`td` or `th`) 
+<tr>
+  <td class="table-active">...</td>
+
+  <td class="table-primary">...</td>
+  <td class="table-secondary">...</td>
+  <td class="table-success">...</td>
+  <td class="table-danger">...</td>
+  <td class="table-warning">...</td>
+  <td class="table-info">...</td>
+  <td class="table-light">...</td>
+  <td class="table-dark">...</td>
+</tr>
+           <div id="msgError"></div>
             <div class="form-floating">
                 <input type="cpf" class="form-control" id="cpf" placeholder="digite seu usuário" />
-                <label for="floatingInput" id="userLabel">CPF:</label>"
+                <label for="floatingInput" id="userLabel">CPF:</label>" -->
                 
            <!-- </div>
             <div class="form-floating">
@@ -31,7 +110,7 @@
             
 
             
-            <button onclick="entrar()" class="btn btn-primary w-100 py-2"> Entrar</button>
+            <button onclick="entrar()" class="btn btn-primary w-100 py-2"> Baixar boleto</button>
 
        </form>
         
